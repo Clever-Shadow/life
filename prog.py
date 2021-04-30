@@ -2,7 +2,6 @@ from tkinter import *
 import random
 import time
 
-
 # Функция для подсчета соседей с окольцовкой
 def neighboard(x, y):
 	global entries
@@ -54,16 +53,65 @@ def peacture(n, m):
 	global main
 	for row in range(n):
 		for col in range(m):
-			main[row][col]["bg"] = "#ff7d00" if entries[row][col] else "#ffffff"
+			main[row][col]["bg"] = "#00ff00" if entries[row][col] else "#000000"
 
 	root.after(1, tick, n, m)
-
+#ff7d00
 # Размер поля n x m
 n = 30
-m = 60
+m = 41
 
-# Массив булевых
-entries = [[False if random.randint(0, 1) == 0 else True for col in range(m)] for row in range(n)]
+# Рандомный массив булевых
+#entries = [[False if random.randint(0, 1) == 0 else True for col in range(m)] for row in range(n)]
+
+# Паттерн
+entries = [[False for col in range(m)] for row in range(n)]
+a = 0
+entries[5 + a][1 + a] = True
+entries[6 + a][1 + a] = True
+entries[5 + a][2 + a] = True
+entries[6 + a][2 + a] = True
+
+entries[3 + a][14 + a] = True
+entries[3 + a][13 + a] = True
+entries[4 + a][12 + a] = True
+entries[5 + a][11 + a] = True
+entries[6 + a][11 + a] = True
+entries[7 + a][11 + a] = True
+entries[8 + a][12 + a] = True
+entries[9 + a][13 + a] = True
+entries[9 + a][14 + a] = True
+
+entries[6 + a][15 + a] = True
+
+entries[4 + a][16 + a] = True
+entries[5 + a][17 + a] = True
+entries[6 + a][17 + a] = True
+entries[7 + a][17 + a] = True
+entries[6 + a][18 + a] = True
+entries[8 + a][16 + a] = True
+
+entries[3 + a][21 + a] = True
+entries[3 + a][22 + a] = True
+entries[4 + a][21 + a] = True
+entries[4 + a][22 + a] = True
+entries[5 + a][21 + a] = True
+entries[5 + a][22 + a] = True
+entries[2 + a][23 + a] = True
+entries[6 + a][23 + a] = True
+
+entries[1 + a][25 + a] = True
+entries[2 + a][25 + a] = True
+
+
+entries[6 + a][25 + a] = True
+entries[7 + a][25 + a] = True
+
+
+entries[3 + a][35 + a] = True
+entries[4 + a][35 + a] = True
+entries[3 + a][36 + a] = True
+entries[4 + a][36 + a] = True
 
 # Создаем окно
 root = Tk()
@@ -74,7 +122,7 @@ root.title("Жизнь")
 main = [[None for col in range(m)] for row in range(n)]
 for row in range(n):
 	for col in range(m):
-		e = Button(width = 2, height = 1)
+		e = Button(width = 2, height = 1, font='Verdana 6')
 		e.grid(row = row, column = col)
 		main[row][col] = e
 
